@@ -1,0 +1,6 @@
+INF2705-TP4--266788
+*.csv
+*.log
+*.pyc
+__pycache__
+.idea
