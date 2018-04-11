@@ -50,12 +50,14 @@ def get_totals(file, requisites):
     return {'total': total, 'feedback': feedback}
 
 
-def make_csv(filename, requisites):
+def make_csv(requisites_file, filename):
     """ Creates a CSV file corresponding the the requisites JSON file """
+    requisites = load_requisites(requisites_file)
     with open(filename, 'w', encoding='UTF-8') as csv_out:
         writer = csv.writer(csv_out, dialect=csv_dialect)
         writer.writerow(Correction.HEADER)
         for key in requisites:
+            print(key)
             req = requisites[key]
             row = [key, '', req['weight'], req['description'], '']
             writer.writerow(row)

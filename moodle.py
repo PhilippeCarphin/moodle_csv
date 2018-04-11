@@ -1,6 +1,6 @@
 import csv
 import os
-from globals import Moodle, csv_dialect, logger
+from globals import Moodle, csv_dialect, logger, Configs
 from groupinfo import get_totals, load_requisites
 
 def skip_row(row):
@@ -16,18 +16,17 @@ def skip_row(row):
 
     return False
 
+def group_to_file(group):
+    filename = '_'.join([Configs.ORIGINAL_CORRECTION_FILE, group])
+    filename += '.csv'
+    path = os.path.join(Configs.DIR, group, filename)
+    return path
+
 def get_group_info(group):
     """ Construct the path of the CSV file for that group and call get_totals """
     total = 'NOT_FOUND'
     feedback = 'NOT_FOUND'
-    filename = Moodle.CORRECTION_FILE_PREFIX \
-           + group.replace(' ', '_') \
-           + Moodle.CORRECTION_FILE_POSTFIX
-    path = os.path.join(
-            Moodle.CORRECTION_DIR,
-            group.replace(' ', '_'),
-            filename
-    )
+    path = group_to_file(group)
 
     try:
         return get_totals(path, load_requisites('./requis.json'))
@@ -38,7 +37,7 @@ def get_group_info(group):
 
 
 if __name__ == '__main__':
-    with open(Moodle.CSV_FILE, 'r', encoding='UTF-8') as csv_in:
+    with open(Configs.MOODLE_CORRECTION_FILE, 'r', encoding='UTF-8') as csv_in:
         reader = csv.reader(
                 csv_in,
                 dialect=csv_dialect,

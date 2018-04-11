@@ -7,6 +7,12 @@ BUT
     Une fois la correction terminée les fichiers de correction individuels sont
     consultés pour pour remplir le fichier de moodle.
 
+
+UTILISATION
+    à ajuster:
+
+        ini
+
 FICHIERS
 
     globals.py
@@ -15,19 +21,32 @@ FICHIERS
         dossiers.  En principe, tout devrait être configurable par ce fichier.
 
     groupinfo.py
-        Code responsable de traiter les fichiers CSV individuels
+        Code responsable de traiter les fichiers CSV individuels.  Lorsqu'exécuté
+        comme main (python3 groupinfo.py), le programme lit le fichier de requis
+        requis.json et crée un fichier .csv.
 
+        Sinon, ce fichier est utilisé comme module pour fournir des fonctions qui
+        traitent les fichiers CSV de chaque groupe.  Il founit la fonction
+        get_totals() qui retourne {'tota': <le total> , 'feedback': <le feedback>}
 
     moodle.py
+        Lorsqu'exécuté comme main, le script va remplir le fichier CSV de moodle
+        en allant chercher les totaux de chaque fichier individuel de chaque groupe.
 
 
     init-correction-moodle.sh
+        Ce fichier doit être exécuté au début.  Il appelle groupinfo.py pour générer
+        une grille de correction en .csv et en dépose une copie dans le dossier
+        chaque groupe et appose le numéro du groupe au fichier pour éviter les erreurs.
 
+        On peut ajouter des commandes dans ce fichier si on veut qu'une action soit
+        répétée pour chaque groupe, comme décompresser une archive.
 
     requis.json
 
 
     test_dir:
+        Un exemple du dossier qui aurait été téléchargé de Moodle
 
         test_dir
         ├── Groupe_01
