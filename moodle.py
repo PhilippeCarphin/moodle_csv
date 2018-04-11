@@ -1,7 +1,7 @@
 import csv
 import os
 from globals import Moodle, csv_dialect, logger, Configs
-from groupinfo import get_totals, load_requisites
+from group import get_totals, load_requisites
 
 def skip_row(row):
     """ Determine whether to skip a row, right now, this function only

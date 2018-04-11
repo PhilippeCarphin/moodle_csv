@@ -2,11 +2,13 @@ import csv
 import logging
 
 class Configs:
+    # Directory containing the submitted assignments
     DIR = 'test_dir'
+    # File downloaded from moodle
+    MOODLE_CORRECTION_FILE = 'moodle.csv'
     # Warning, do not put '.csv', it will be put automatically because it is
     # mandatory
     ORIGINAL_CORRECTION_FILE = 'correction_tp4'
-    MOODLE_CORRECTION_FILE = 'moodle.csv'
     REQUISITES_FILE = 'requis.json'
 
 

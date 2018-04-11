@@ -57,7 +57,6 @@ def make_csv(requisites_file, filename):
         writer = csv.writer(csv_out, dialect=csv_dialect)
         writer.writerow(Correction.HEADER)
         for key in requisites:
-            print(key)
             req = requisites[key]
             row = [key, '', req['weight'], req['description'], '']
             writer.writerow(row)

@@ -4,4 +4,5 @@ dir=$1
 
 cd $dir
 
-echo 'HELLO' > test.txt
+# unzip *.zip
+# make
