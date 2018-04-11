@@ -71,7 +71,9 @@ UTILISATION
         $ python3 moodle.py
 
         Ce script produit un fichier out.csv qui est la version remplie du
-        formulaire d'évaluation.
+        formulaire d'évaluation.  Un fichier output.log dira s'il manque des
+        choses et le fichier out.csv aura aussi des mentions 'NOT_FOUND' s'il
+        manque quelque chose pour un certain groupe.
 
 FICHIERS
 
