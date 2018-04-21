@@ -55,7 +55,7 @@ if __name__ == '__main__':
                     group = row[Moodle.GROUPE].replace(' ', '_')
                     group_info = get_group_info(group)
                     new_row = row[:Moodle.NOTE] \
-                              + [group_info['total']] \
+                              + [str(group_info['total']).replace('.',',')] \
                               + row[Moodle.NOTE+1:Moodle.COMMENTAIRE] \
                               + [group_info['feedback']]
                 writer.writerow(new_row)
