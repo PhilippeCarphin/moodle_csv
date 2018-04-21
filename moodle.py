@@ -52,7 +52,7 @@ if __name__ == '__main__':
                 if skip_row(row):
                     new_row = row
                 else:
-                    group = row[Moodle.GROUPE]
+                    group = row[Moodle.GROUPE].replace(' ', '_')
                     group_info = get_group_info(group)
                     new_row = row[:Moodle.NOTE] \
                               + [group_info['total']] \
