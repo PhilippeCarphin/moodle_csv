@@ -18,6 +18,9 @@ def get_totals(file, requisites):
     where total is just the sum of the points column and feedback is a
     formatted string made from the comments of individual requisites.
     On each line the requisite code is written with the comment."""
+    error_value = { 'total' : 'SEE_LOG', 'feedback': 'SEE_LOG'}
+    requisite_list = requisites['requisite_list']
+    codes = map(lambda req : req['code'], requisite_list)
     with open(file, 'r', encoding='UTF-8') as group_csv:
         reader = csv.reader(group_csv)
         total = 0.0
@@ -27,21 +30,30 @@ def get_totals(file, requisites):
             req_code = row[0]
             if req_code == Correction.HEADER[0]:
                 continue
-            if req_code not in requisites:
-                logger.warning("CSV-JSON Inconsistency in file={}, req_code={}"
+
+            weight = float(row[Correction.POIDS])
+            if req_code not in codes:
+                logger.warning("CSV-JSON Inconsistency in file={}, req_code={} not in codes from JSON file"
                                .format(file, req_code))
                 raise ConsistencyError
-                continue
 
-            value = row[Correction.POINTS]
+
+            points = row[Correction.POINTS]
             try:
-                value = float(value)
-                total += value
+                points = float(points)
             except:
                 if row[Correction.POIDS] != '0':
                     missing_data = True
                     logger.warning("Missing points in file={}, req_code={}"
-                                   .format(value, file, req_code))
+                                   .format(file, req_code))
+                    return error_value
+            if points > weight:
+                logger.warning("Inconsistency in file={}, req_code={} : points={} greater than weight={}"
+                               .format(file, req_code, points, weight))
+                return error_value
+
+            total += points
+
             comment = row[Correction.COMMENTAIRE]
             if comment != "":
                 feedback +=  "{} : {} \r\n".format(req_code, comment)
