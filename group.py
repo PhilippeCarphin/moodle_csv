@@ -56,13 +56,13 @@ def make_csv(requisites_file, filename):
     with open(filename, 'w', encoding='UTF-8') as csv_out:
         writer = csv.writer(csv_out, dialect=csv_dialect)
         writer.writerow(Correction.HEADER)
-        for key in requisites:
-            req = requisites[key]
-            row = [key, '', req['weight'], req['description'], '']
+        for req in requisites['requisite_list']:
+            row = [req['code'], '', req['weight'], req['description'], '']
             writer.writerow(row)
 
 
 if __name__ == "__main__":
     """ If this module is called as main, create the CSV file corresponding
     to the JSON file """
-    make_csv('correction_tp4.csv', load_requisites('requis.json'))
+    make_csv('requis.json', 'json_to_csv.csv')
+

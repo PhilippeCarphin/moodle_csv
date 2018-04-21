@@ -1,66 +1,83 @@
-{
-    "P1.1" : {
-        "weight": 3,
-        "description": "Le mode de rétroaction est bien utilisé pour avancer les particules."
-    },
-    "P1.2": {
-        "weight": 1,
-        "description": "Les particules (re)naissent toutes à la position du puits avec une trajectoire aléatoire de départ."
-    },
-    "P1.3": {
-        "weight": 1,
-        "description": "Les particules ont une durée de vie aléatoire (entre 0 et tempsVieMax secondes)."
-    },
-    "P1.4": {
-        "weight": 1,
-        "description": "Les particules ont une couleur aléatoire (chaque composante entre COULMIN et COULMAX)."
-    },
-    "P1.5": {
-        "weight": 2,
-        "description": "La gravité est implémentée correctement, donnant une trajectoire de parabole aux particules."
-    },
-    "P1.6": {
-        "weight": 2,
-        "description": "Les particules rebondissent sur les parois par collision rigide."
-    },
-    "P2.1": {
-        "weight": 3,
-        "description": "Les particules sont représentées avec des lutins."
-    },
-    "P2.2": {
-        "weight": 3,
-        "description": "Les étincelles tournent autour de leur centre."
-    },
-    "P2.3": {
-        "weight": 3,
-        "description": "Les oiseaux volent et les leprechauns tournoient sur eux-mêmes."
-    },
-    "P2.4": {
-        "weight": 3,
-        "description": "Les variations de l'étincelle, des oiseaux et des leprechauns dépendent du temps de vie restant de chaque particule."
-    },
-    "P3.1": {
-        "weight": 3,
-        "description": "Les particules deviennent deux fois plus transparentes à chaque collision."
-    },
-    "P3.2": {
-        "weight": 3,
-        "description": "Les oiseaux volent toujours dans le bon sens et non quelquefois vers l'arrière."
-    },
-    "P3.3": {
-        "weight": 0,
-        "description": "Le logiciel utilise correctement les touches listées à lannexe"
-    },
-    "QC": {
-        "weight": 2,
-        "description": "Qualité du code"
-    },
-    "R1": {
-        "weight": 1,
-        "description": "Première question du rapport"
-    },
-    "R2": {
-        "weight": 1,
-        "description": "Deuxième question du rapport"
-    }
+{ "requisite_list" : [
+		{
+            "code" : "P1.1",
+			"weight": 3,
+			"description": "Le mode de rétroaction est bien utilisé pour avancer les particules."
+		},
+		{
+            "code" : "P1.2",
+			"weight": 1,
+			"description": "Les particules (re)naissent toutes à la position du puits avec une trajectoire aléatoire de départ."
+		},
+		{
+            "code" : "P1.3",
+			"weight": 1,
+			"description": "Les particules ont une durée de vie aléatoire (entre 0 et tempsVieMax secondes)."
+		},
+		{
+            "code" : "P1.4",
+			"weight": 1,
+			"description": "Les particules ont une couleur aléatoire (chaque composante entre COULMIN et COULMAX)."
+		},
+		{
+            "code" : "P1.5",
+			"weight": 2,
+			"description": "La gravité est implémentée correctement, donnant une trajectoire de parabole aux particules."
+		},
+		{
+            "code" : "P1.6",
+			"weight": 2,
+			"description": "Les particules rebondissent sur les parois par collision rigide."
+		},
+		{
+            "code" : "P2.1",
+			"weight": 3,
+			"description": "Les particules sont représentées avec des lutins."
+		},
+		{
+            "code" : "P2.2",
+			"weight": 3,
+			"description": "Les étincelles tournent autour de leur centre."
+		},
+		{
+            "code" : "P2.3",
+			"weight": 3,
+			"description": "Les oiseaux volent et les leprechauns tournoient sur eux-mêmes."
+		},
+		{
+            "code" : "P2.4",
+			"weight": 3,
+			"description": "Les variations de l'étincelle, des oiseaux et des leprechauns dépendent du temps de vie restant de chaque particule."
+		},
+		{
+            "code" : "P3.1",
+			"weight": 3,
+			"description": "Les particules deviennent deux fois plus transparentes à chaque collision."
+		},
+		{
+            "code" : "P3.2",
+			"weight": 3,
+			"description": "Les oiseaux volent toujours dans le bon sens et non quelquefois vers l'arrière."
+		},
+		{
+            "code" : "P3.3",
+			"weight": 0,
+			"description": "Le logiciel utilise correctement les touches listées à lannexe"
+		},
+		{
+            "code" : "QC",
+			"weight": 2,
+			"description": "Qualité du code"
+		},
+		{
+            "code" : "R1",
+			"weight": 1,
+			"description": "Première question du rapport"
+		},
+		{
+            "code" : "R2",
+			"weight": 1,
+			"description": "Deuxième question du rapport"
+		}
+	]
 }
