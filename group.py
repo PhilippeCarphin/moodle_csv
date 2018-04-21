@@ -29,7 +29,7 @@ def get_totals(file, requisites):
                 continue
             if req_code not in requisites:
                 logger.warning("CSV-JSON Inconsistency in file={}, req_code={}"
-                               .format(value, file, req_code))
+                               .format(file, req_code))
                 raise ConsistencyError
                 continue
 
