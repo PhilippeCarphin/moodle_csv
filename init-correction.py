@@ -1,11 +1,11 @@
-import group
+import groupinfo
 import os
 from shutil import copyfile
 from globals import Configs
 from moodle import group_to_file
 import subprocess
 
-group.make_csv(
+groupinfo.make_csv(
     Configs.REQUISITES_FILE,
     Configs.ORIGINAL_CORRECTION_FILE + '.csv'
 )

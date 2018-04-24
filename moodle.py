@@ -1,12 +1,48 @@
 import csv
-import os
 from globals import Moodle, csv_dialect, logger, Configs
-from group import get_totals, load_requisites
+
+
+def fill_in_moodle_sheet(filename, outfilename, info_getter):
+    """
+    Applies a transformation to all the rows of a CSV file
+    Info_getter is a function that takes a group and returns
+    a dictionary with keys 'total' and 'feedback'
+    """
+    with open(filename, 'r', encoding='UTF-8') as csv_in, \
+            open(outfilename, 'w', encoding='UTF-8') as csv_out:
+
+        reader = csv.reader(csv_in, dialect=csv_dialect)
+        writer = csv.writer(csv_out, dialect=csv_dialect)
+        for row in reader:
+            new_row = row
+            try:
+                new_row = fill_in_row(row, info_getter)
+            except Exception as e:
+                logger.warning("Could not fill in row " + str(row) + str(e))
+
+            writer.writerow(new_row)
+
+
+def fill_in_row(row, info_getter):
+    """
+    Fills in the grade column and feedback column
+    Info_getter is a function that takes a group and returns
+    a dictionary with keys 'total' and 'feedback'
+    """
+    new_row = row
+    if skip_row(row):
+        new_row = row
+    else:
+        group_info = info_getter(row[Moodle.GROUPE])
+        new_row[Moodle.NOTE] = group_info['total']
+        new_row[Moodle.COMMENTAIRE] = group_info['feedback']
+    return new_row
+
 
 def skip_row(row):
-    """ Determine whether to skip a row, right now, this function only
-    says to skip the header row, but it will maybe skip the rows when there
-    is nothing handed in."""
+    """ 
+    Determine whether to skip a row
+    """
     if row[Moodle.IDENTIFIANT].endswith('Identifiant'):
         return True
     if 'bidon' in row[Moodle.GROUPE]:
@@ -16,46 +52,8 @@ def skip_row(row):
 
     return False
 
-def group_to_file(group):
-    filename = '_'.join([Configs.ORIGINAL_CORRECTION_FILE, group])
-    filename += '.csv'
-    path = os.path.join(Configs.DIR, group, filename)
-    return path
-
-def get_group_info(group):
-    """ Construct the path of the CSV file for that group and call get_totals """
-    total = 'NOT_FOUND'
-    feedback = 'NOT_FOUND'
-    path = group_to_file(group)
-
-    try:
-        return get_totals(path, load_requisites('./requis.json'))
-    except FileNotFoundError:
-        pass
-
-    return {'total': total, 'feedback': feedback}
-
 
 if __name__ == '__main__':
-    with open(Configs.MOODLE_CORRECTION_FILE, 'r', encoding='UTF-8') as csv_in:
-        reader = csv.reader(
-                csv_in,
-                dialect=csv_dialect,
-        )
-        with open('out.csv', 'w', encoding='UTF-8') as csv_out:
-            writer = csv.writer(
-                    csv_out,
-                    dialect=csv_dialect
-            )
-            for row in reader:
-                new_row = row
-                if skip_row(row):
-                    new_row = row
-                else:
-                    group = row[Moodle.GROUPE].replace(' ', '_')
-                    group_info = get_group_info(group)
-                    new_row = row[:Moodle.NOTE] \
-                              + [str(group_info['total']).replace('.',',')] \
-                              + row[Moodle.NOTE+1:Moodle.COMMENTAIRE] \
-                              + [group_info['feedback']]
-                writer.writerow(new_row)
+    import groupinfo
+
+    fill_in_moodle_sheet(Configs.MOODLE_CORRECTION_FILE, 'out.csv', groupinfo.get_group_info)
