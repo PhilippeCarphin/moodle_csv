@@ -1,83 +1,62 @@
-{ "requisite_list" : [
-		{
-            "code" : "P1.1",
-			"weight": 3,
-			"description": "Le mode de rétroaction est bien utilisé pour avancer les particules."
-		},
-		{
-            "code" : "P1.2",
-			"weight": 1,
-			"description": "Les particules (re)naissent toutes à la position du puits avec une trajectoire aléatoire de départ."
-		},
-		{
-            "code" : "P1.3",
-			"weight": 1,
-			"description": "Les particules ont une durée de vie aléatoire (entre 0 et tempsVieMax secondes)."
-		},
-		{
-            "code" : "P1.4",
-			"weight": 1,
-			"description": "Les particules ont une couleur aléatoire (chaque composante entre COULMIN et COULMAX)."
-		},
-		{
-            "code" : "P1.5",
-			"weight": 2,
-			"description": "La gravité est implémentée correctement, donnant une trajectoire de parabole aux particules."
-		},
-		{
-            "code" : "P1.6",
-			"weight": 2,
-			"description": "Les particules rebondissent sur les parois par collision rigide."
-		},
-		{
-            "code" : "P2.1",
-			"weight": 3,
-			"description": "Les particules sont représentées avec des lutins."
-		},
-		{
-            "code" : "P2.2",
-			"weight": 3,
-			"description": "Les étincelles tournent autour de leur centre."
-		},
-		{
-            "code" : "P2.3",
-			"weight": 3,
-			"description": "Les oiseaux volent et les leprechauns tournoient sur eux-mêmes."
-		},
-		{
-            "code" : "P2.4",
-			"weight": 3,
-			"description": "Les variations de l'étincelle, des oiseaux et des leprechauns dépendent du temps de vie restant de chaque particule."
-		},
-		{
-            "code" : "P3.1",
-			"weight": 3,
-			"description": "Les particules deviennent deux fois plus transparentes à chaque collision."
-		},
-		{
-            "code" : "P3.2",
-			"weight": 3,
-			"description": "Les oiseaux volent toujours dans le bon sens et non quelquefois vers l'arrière."
-		},
-		{
-            "code" : "P3.3",
-			"weight": 0,
-			"description": "Le logiciel utilise correctement les touches listées à lannexe"
-		},
-		{
-            "code" : "QC",
-			"weight": 2,
-			"description": "Qualité du code"
-		},
-		{
-            "code" : "R1",
-			"weight": 1,
-			"description": "Première question du rapport"
-		},
-		{
-            "code" : "R2",
-			"weight": 1,
-			"description": "Deuxième question du rapport"
-		}
-	]
+{ "requisites_list": [
+    {
+        "code" : "",
+        "weight" : 2,
+        "description" : "La surface est subdivisée en triangles plus petits en utilisant les nuanceurs de tessellation."
+    },
+    {
+        "code" : "",
+        "weight" : 2,
+        "description" : "Le déplacement par la fonction mathématique $FctMath()$ est bien implémenté dans les nuanceurs."
+    },
+    {
+        "code" : "",
+        "weight": 1,
+        "description" : "On peut faire varier le domaine de la fonction."
+    },
+    {
+        "code" : "",
+        "weight" : 0,
+        "description" : "Il est possible de varier l'effet du déplacement selon facteurDeform."
+    },
+    {
+        "code" : "",
+        "weight" :2,
+        "description" : "Le calcul des normales est fait correctement et la surface est bien illuminée (Blinn)."
+    },
+    {
+        "code" : "",
+        "weight": 2,
+        "description" : "Le calcul de l'illumination est correct, autant pour des lumières ponctuelles que directionnelles."
+    },
+    {
+        "code" : "",
+        "weight" : 1,
+        "description" : "Les neuf textures peuvent être affichées sur le plan."
+    },
+    {
+        "code" : "",
+        "weight": 2,
+        "description" : "Le déplacement par la texture FctText() est bien implémenté dans les nuanceurs (touche 't')."
+    },
+    {
+        "code" : "",
+        "weight" : 1,
+        "description" : "Il est possible de varier l'effet du placage de déplacement selon facteurDeform."
+    },
+    {
+        "code" : "",
+        "weight" : 2,
+        "description" : "Le coloration avec la texture est implémentée dans les nuanceurs (touche 'c')."
+    },
+    {
+        "code" : "",
+        "weight" : 3,
+        "description" : "L'affichage peut aussi être en stéréoscopie en mode anaglyphe ou en mode double."
+    },
+    {
+        "code" : "",
+        "weight" : 0,
+        "description" : "(Le logiciel utilise correctement les touches listées à l'annexe"
+    }
 }
